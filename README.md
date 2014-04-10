@@ -49,6 +49,44 @@ The API consists of a primary draw method which accepts a configuration object, 
   );
 ```
 
+### Example using RequireJS
+
+```javascript
+define(["flotr2/js/Graph", "flotr2/js/types/lines", "flotr2/js/plugins/labels",  "flotr2/js/plugins/grid"],
+function(Graph){
+  var
+    // Container div:
+    container = document.getElementById("flotr-example-graph"),
+    // First data series:
+    d1 = [[0, 3], [4, 8], [8, 5], [9, 13]],
+    // Second data series:
+    d2 = [],
+    // A couple flotr configuration options:
+    options = {
+      xaxis: {
+        minorTickFreq: 4
+      }, 
+      grid: {
+        minorVerticalLines: true
+      }
+    },
+    i, graph;
+
+  // Generated second data set:
+  for (i = 0; i < 14; i += 0.5) {
+    d2.push([i, Math.sin(i)]);
+  }
+
+  // Draw the graph:
+  graph = new Graph(
+    container,  // Container element
+    [ d1, d2 ], // Array of data series
+    options     // Configuration options
+  );
+});
+```
+
+
 ### Microlibs
 
 * [underscore.js](http://documentcloud.github.com/underscore/)
